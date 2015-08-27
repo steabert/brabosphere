@@ -51,7 +51,7 @@
 
 // Qt header files
 #include <qcolor.h>
-#include <qdom.h>
+#include <QtXml/qdom.h>
 #include <qstring.h>
 #include <qstringlist.h>
 
@@ -1018,7 +1018,7 @@ void AtomSet::loadCML(const QDomElement* root)
                 }
               }
               else if(scalarNode.toElement().tagName() == "vector3" && scalarNode.toElement().attribute("dictRef") == DomUtils::nsCMLM + ":dcart")
-                newForces += QStringList::split(" ",scalarNode.toElement().text());
+                newForces += scalarNode.toElement().text().split(" ");
             }
             scalarNode = scalarNode.nextSibling();
           }
@@ -1069,8 +1069,8 @@ void AtomSet::saveCML(QDomElement* root)
   {
     ///// atom
     childNode = root->ownerDocument().createElement("atom");
-    childNode.setAttribute("id", QString(numToAtom(atomicNumber(i)).stripWhiteSpace() + QString::number(i + 1)));
-    childNode.setAttribute("elementType", numToAtom(atomicNumber(i)).stripWhiteSpace());
+    childNode.setAttribute("id", QString(numToAtom(atomicNumber(i)).trimmed() + QString::number(i + 1)));
+    childNode.setAttribute("elementType", numToAtom(atomicNumber(i)).trimmed());
     childNode.setAttribute("x3", QString::number(coords[i].x(), 'f', 12));
     childNode.setAttribute("y3", QString::number(coords[i].y(), 'f', 12));
     childNode.setAttribute("z3", QString::number(coords[i].z(), 'f', 12));
@@ -1127,7 +1127,7 @@ unsigned int AtomSet::atomToNum(const QString& atom)
 /// Returns the atomic number corresponding
 /// to the element atom.
 {
-  QString atom2 = atom.upper().simplifyWhiteSpace();  
+  QString atom2 = atom.toUpper().simplified();  
   if(atom2 == "H")  return  1;
   if(atom2 == "HE") return  2;
   if(atom2 == "LI") return  3;

@@ -1,137 +1,141 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
-<class>OutputChooserWidget</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>OutputChooserWidget</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>465</width>
-            <height>290</height>
-        </rect>
-    </property>
-    <property name="caption">
-        <string>Choose the output to show</string>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>textLabel1</cstring>
-            </property>
-            <property name="text">
-                <string>Click on one of the output files that are available</string>
-            </property>
-        </widget>
-        <widget class="QListView">
-            <column>
-                <property name="text">
-                    <string>Cycle</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Brabo (.out)</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Stock (.stou)</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Relax (.aou)</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Internal coordinates (.aff)</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <property name="name">
-                <cstring>ListView</cstring>
-            </property>
-            <property name="resizeMode">
-                <enum>LastColumn</enum>
-            </property>
-            <property name="whatsThis" stdset="0">
-                <string>Shows a list of output files that were found in the calculation directory. Clicking one of the output files with the mark will open it for viewing.</string>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout1</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>40</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButtonClose</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Close</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Closes the window.</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-    </vbox>
-</widget>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OutputChooserWidget</class>
+ <widget class="QDialog" name="OutputChooserWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>465</width>
+    <height>290</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Choose the output to show</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QLabel" name="textLabel1">
+     <property name="text">
+      <string>Click on one of the output files that are available</string>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Q3ListView" name="ListView">
+     <property name="whatsThis">
+      <string>Shows a list of output files that were found in the calculation directory. Clicking one of the output files with the mark will open it for viewing.</string>
+     </property>
+     <property name="resizeMode">
+      <enum>Q3ListView::LastColumn</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>Cycle</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Brabo (.out)</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Stock (.stou)</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Relax (.aou)</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Internal coordinates (.aff)</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <spacer name="spacer1">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PushButtonClose">
+       <property name="whatsThis">
+        <string>Closes the window.</string>
+       </property>
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends>QFrame</extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3ListView</class>
+   <extends>Q3Frame</extends>
+   <header>q3listview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

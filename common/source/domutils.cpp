@@ -33,10 +33,10 @@
 ///// Header files ////////////////////////////////////////////////////////////
 
 // Qt header files
-#include <qdom.h>
-#include <qstring.h>
-#include <qstringlist.h>
-#include <qvaluelist.h>
+#include <QtXml/qdom.h>
+#include <QString>
+#include <QStringList>
+#include <QLinkedList>
 
 // Xbrabo header files
 #include <domutils.h>
@@ -50,7 +50,7 @@
 void DomUtils::readNode(QDomNode* node, QString* value)
 /// Reads a string from a QDomNode.
 {  
-  *value = node->toElement().attribute("value").stripWhiteSpace();
+  *value = node->toElement().attribute("value").trimmed();
 }
 
 ///// readNode (overloaded) ///////////////////////////////////////////////////
@@ -61,7 +61,7 @@ void DomUtils::readNode(QDomNode* node, QStringList* values)
   //  return;
   QDomNode childNode = node->namedItem("array");
   if(!childNode.isNull())
-    *values =  QStringList::split(" ",childNode.toElement().text());
+          *values =  childNode.toElement().text().split(" ");
 }
 
 ///// readNode (overloaded) ///////////////////////////////////////////////////
@@ -106,7 +106,7 @@ void DomUtils::readNode(QDomNode* node, bool* value)
 {
   //if(node->toElement().attribute("dataType") != "xsd:boolean")
   //  return;
-  *value = node->toElement().attribute("value").stripWhiteSpace() == "true";
+  *value = node->toElement().attribute("value").trimmed() == "true";
 }
 
 ///// readNode (overloaded) ///////////////////////////////////////////////////
@@ -119,7 +119,7 @@ void DomUtils::readNode(QDomNode* node, std::vector<unsigned int>* values)
   QDomNode childNode = node->namedItem("array");
   if(!childNode.isNull())
   {
-    QStringList valueList = QStringList::split(" ",childNode.toElement().text());
+    QStringList valueList = childNode.toElement().text().split(" ");
     for(QStringList::Iterator it = valueList.begin(); it != valueList.end(); it++)
       values->push_back((*it).toUShort());  
   }
@@ -135,7 +135,7 @@ void DomUtils::readNode(QDomNode* node, std::vector<double>* values)
   QDomNode childNode = node->namedItem("array");
   if(!childNode.isNull())
   {
-    QStringList valueList = QStringList::split(" ",childNode.toElement().text());
+    QStringList valueList = childNode.toElement().text().split(" ");
     for(QStringList::Iterator it = valueList.begin(); it != valueList.end(); it++)
       values->push_back((*it).toDouble());
   }
@@ -151,15 +151,15 @@ void DomUtils::readNode(QDomNode* node, std::vector<bool>* values)
   QDomNode childNode = node->namedItem("array");
   if(!childNode.isNull())
   {
-    QStringList valueList = QStringList::split(" ",childNode.toElement().text());
+    QStringList valueList = childNode.toElement().text().split(" ");
     for(QStringList::Iterator it = valueList.begin(); it != valueList.end(); it++)
       values->push_back(*it == "true");
   }
 }
 
 ///// readNode (overloaded) ///////////////////////////////////////////////////
-void DomUtils::readNode(QDomNode* node, QValueList<int>* values)
-/// Reads a QValueList<int> from a QDomNode.
+void DomUtils::readNode(QDomNode* node, QLinkedList<int>* values)
+/// Reads a QLinkedList<int> from a QDomNode.
 {
   //if(node->toElement().attribute("dataType") != "xsd:int")
   //  return;
@@ -167,7 +167,7 @@ void DomUtils::readNode(QDomNode* node, QValueList<int>* values)
   QDomNode childNode = node->namedItem("array");
   if(!childNode.isNull())
   {
-    QStringList valueList = QStringList::split(" ",childNode.toElement().text());
+    QStringList valueList = childNode.toElement().text().split(" ");
     for(QStringList::Iterator it = valueList.begin(); it != valueList.end(); it++)
       values->push_back((*it).toInt());
   }
@@ -295,7 +295,7 @@ void DomUtils::makeNode(QDomElement* root, const std::vector<unsigned int> nodeD
   QString text;
   for(std::vector<unsigned int>::const_iterator it = nodeData.begin(); it < nodeData.end(); it++)
     text += " " + QString::number(*it);
-  text.stripWhiteSpace();
+  text.trimmed();
   QDomText textNode = root->ownerDocument().createTextNode(text);
   grandChildNode.appendChild(textNode);
   childNode.appendChild(grandChildNode);
@@ -321,7 +321,7 @@ void DomUtils::makeNode(QDomElement* root, const std::vector<double> nodeData, c
   QString text;
   for(std::vector<double>::const_iterator it = nodeData.begin(); it < nodeData.end(); it++)
     text += " " + QString::number(*it, 'f', 12);
-  text.stripWhiteSpace();
+  text.trimmed();
   QDomText textNode = root->ownerDocument().createTextNode(text);
   grandChildNode.appendChild(textNode);
   childNode.appendChild(grandChildNode);
@@ -345,7 +345,7 @@ void DomUtils::makeNode(QDomElement* root, const std::vector<bool> nodeData, con
   QString text;
   for(std::vector<bool>::const_iterator it = nodeData.begin(); it != nodeData.end(); it++)
     text += " " + *it ? "true" : "false";
-  text.stripWhiteSpace();
+  text.trimmed();
   QDomText textNode = root->ownerDocument().createTextNode(text);
   grandChildNode.appendChild(textNode);
   childNode.appendChild(grandChildNode);
@@ -353,8 +353,8 @@ void DomUtils::makeNode(QDomElement* root, const std::vector<bool> nodeData, con
 }
 
 ///// makeNode (overloaded) ///////////////////////////////////////////////////
-void DomUtils::makeNode(QDomElement* root, const QValueList<int> nodeData, const QString dictRef)
-/// Creates a QDomElement from a QValueList<int>.
+void DomUtils::makeNode(QDomElement* root, const QLinkedList<int> nodeData, const QString dictRef)
+/// Creates a QDomElement from a QLinkedList<int>.
 {
   if(nodeData.size() == 0)  // an array should at least contain 1 element
     return;
@@ -366,9 +366,9 @@ void DomUtils::makeNode(QDomElement* root, const QValueList<int> nodeData, const
   QDomElement grandChildNode = root->ownerDocument().createElement("array");
   grandChildNode.setAttribute("size",QString::number(nodeData.size()));
   QString text;
-  for(QValueList<int>::const_iterator it = nodeData.begin(); it != nodeData.end(); it++)
+  for(QLinkedList<int>::const_iterator it = nodeData.begin(); it != nodeData.end(); it++)
     text += " " + QString::number(*it);
-  text.stripWhiteSpace();
+  text.trimmed();
   QDomText textNode = root->ownerDocument().createTextNode(text);
   grandChildNode.appendChild(textNode);
   childNode.appendChild(grandChildNode);

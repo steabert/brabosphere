@@ -24,7 +24,7 @@
 ////// Forward class declarations /////////////////////////////////////////////
 
 // Qt header files
-#include <qgl.h>
+#include <QtOpenGL/qgl.h>
 
 ///// struct GLMoleculeParameters /////////////////////////////////////////////
 struct GLMoleculeParameters

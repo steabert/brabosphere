@@ -39,12 +39,11 @@
 #include <qbuttongroup.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
-#include <qdom.h>
+#include <QtXml/qdom.h>
 #include <qfiledialog.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qlineedit.h>
-#include <qlistbox.h>
 #include <qlistview.h>
 #include <qmessagebox.h>
 #include <qpixmap.h>
@@ -53,11 +52,10 @@
 #include <qradiobutton.h>
 #include <qspinbox.h>
 #include <qstring.h>
-#include <qtable.h>
 #include <qtextedit.h>
 #include <qtoolbutton.h>
 #include <qvalidator.h>
-#include <qwidgetstack.h>
+#include <QStackedWidget>
 
 // Xbrabo header files
 #include "atomset.h"
@@ -66,7 +64,7 @@
 #include "domutils.h"
 #include "iconsets.h"
 #include "paths.h"
-#include "textviewwidget.h"
+//#include "textviewwidget.h"
 #include "utils.h"
 #include "version.h"
 

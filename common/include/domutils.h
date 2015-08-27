@@ -31,7 +31,7 @@ class QDomElement;
 class QDomNode;
 class QString;
 class QStringList;
-template<class T> class QValueList;
+template<class T> class QLinkedList;
 
 ///// class DomUtils //////////////////////////////////////////////////////////
 class DomUtils
@@ -47,7 +47,7 @@ class DomUtils
     static void readNode(QDomNode* node, std::vector<unsigned int>* values);         // overloaded
     static void readNode(QDomNode* node, std::vector<double>* values); // overloaded
     static void readNode(QDomNode* node, std::vector<bool>* values); // overloaded
-    static void readNode(QDomNode* node, QValueList<int>* values);     // overloaded        
+    static void readNode(QDomNode* node, QLinkedList<int>* values);     // overloaded        
     static void makeNode(QDomElement* root, const QString nodeData, const QString dictRef = 0,const QString attributeName = 0, const QString attributeValue = 0); // adds a node to root of type string with a title and another attribute
     static void makeNode(QDomElement* root, const QStringList nodeData, const QString dictRef = 0,const QString attributeName = 0, const QString attributeValue = 0);       // overloaded
     static void makeNode(QDomElement* root, const unsigned int nodeData, const QString dictRef);      // overloaded
@@ -57,7 +57,7 @@ class DomUtils
     static void makeNode(QDomElement* root, const std::vector<unsigned int> nodeData, const QString dictRef);  // overloaded
     static void makeNode(QDomElement* root, const std::vector<double> nodeData, const QString dictRef = QString::null,const QString attributeName = QString::null, const QString attributeValue = QString::null);  // overloaded
     static void makeNode(QDomElement* root, const std::vector<bool> nodeData, const QString dictRef);  // overloaded
-    static void makeNode(QDomElement* root, const QValueList<int> nodeData, const QString dictRef);   // overloaded
+    static void makeNode(QDomElement* root, const QLinkedList<int> nodeData, const QString dictRef);   // overloaded
     static bool dictEntry(QDomNode& node, const QString value);       //Returns whether the node has a dictRef attribute with the namespaced contents of value 
 
     static const QString uriDict10;     // The URI for the Brabosphere dictionary version 1.0

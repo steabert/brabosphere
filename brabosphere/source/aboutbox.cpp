@@ -30,6 +30,8 @@
 
 // Qt header files
 #include <qapplication.h>
+#include <QBitmap>
+#include <QDesktopWidget>
 
 // Xbrabo header files
 #include "aboutbox.h"
@@ -40,16 +42,15 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ///// constructor /////////////////////////////////////////////////////////////
-AboutBox::AboutBox(QWidget* parent, const char* name) : QDialog(parent, name, true, Qt::WStyle_Customize | Qt::WStyle_NoBorder)
+AboutBox::AboutBox(QWidget* parent, const char* name) : QDialog(parent, Qt::FramelessWindowHint)
 /// The default constructor. It loads the required pixmap and centers the dialog 
 /// on the screen.
 {
   // load the pixmap and adapt the dialog to it
   QPixmap pm(IconSets::getSplash());
   resize(pm.size());
-  setBackgroundPixmap(pm);
-  if(pm.mask())
-    setMask(*pm.mask());
+  if(!pm.mask().isNull())
+    setMask(pm.mask());
   
   // center it on the dekstop
   QRect screenRect = QApplication::desktop()->availableGeometry(QApplication::desktop()->primaryScreen());

@@ -36,7 +36,7 @@ class QString;
 class AtomSet;
 
 // Base class header file
-#include "brabowidget.h"
+#include "ui_brabowidget.h"
 
 
 ///// class BraboBase /////////////////////////////////////////////////////////

@@ -27,7 +27,7 @@
 #include <vector>
 
 // Qt forward class declarations
-#include <qiconset.h>
+#include <QIcon>
 #include <qpixmap.h>
 class QString;
 
@@ -52,7 +52,7 @@ class IconSets
                   OK, BRABO, Molecule, Visuals, OpenGL, PVM};
 
     // static public member functions
-    static QIconSet getIconSet(const IconSetID id);         // returns the iconset associated with the id
+    static QIcon getIconSet(const IconSetID id);         // returns the iconset associated with the id
     static QString factoryName(const IconSetID id);         // returns the string with which to access the 'normal' version of the icon
     static QPixmap getPixmap(const PixmapID id);  // returns the pixmap associated with the id
     static QPixmap getSplash();         // returns the pixmap used for the splash screen and about box

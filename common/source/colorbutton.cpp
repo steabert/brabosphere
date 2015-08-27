@@ -32,6 +32,7 @@
 // Qt header files
 #include <qcolor.h>
 #include <qcolordialog.h>
+#include <QtGui/qicon.h>
  
 // Xbrabo header files
 #include <colorbutton.h>
@@ -41,7 +42,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ///// constructor /////////////////////////////////////////////////////////////
-ColorButton::ColorButton(QWidget* parent, const char* name) : QPushButton(parent, name)
+ColorButton::ColorButton(QWidget* parent, const char* name) : QPushButton(name, parent)
 /// The default constructor.
 {
   pixmap = new QPixmap();
@@ -52,7 +53,7 @@ ColorButton::ColorButton(QWidget* parent, const char* name) : QPushButton(parent
 }
 
 ///// constructor (overloaded) ////////////////////////////////////////////////
-ColorButton::ColorButton(const QColor& color, QWidget* parent, const char* name) : QPushButton(parent, name)
+ColorButton::ColorButton(const QColor& color, QWidget* parent, const char* name) : QPushButton(name, parent)
 /// \overloaded
 {
   pixmap = new QPixmap();
@@ -118,8 +119,8 @@ void ColorButton::selectColor()
 void ColorButton::updatePixmap()
 /// Updates the size and color of the pixmap representing the current color.
 {  
-  pixmap->resize(width() - height()/2, height()/2);
+        this->setIcon(QIcon(*pixmap));
+        this->setIconSize(QSize(width() - height()/2, height()/2));
   pixmap->fill(fillColor);
-  this->setPixmap(*pixmap);
 }
 

@@ -27,7 +27,7 @@
 //class QColor;
 
 // Qt header files
-#include <qgl.h>
+#include <QtOpenGL/qgl.h>
 
 ///// struct GLBaseParameters /////////////////////////////////////////////////
 struct GLBaseParameters

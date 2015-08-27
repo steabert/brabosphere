@@ -38,11 +38,15 @@
 // Qt header files
 #include <qdatetime.h>
 #include <qfiledialog.h>
-#include <qimage.h>
+#include <QImage>
+#include <QImageWriter>
 #include <qmessagebox.h>
 #include <qpoint.h>
 #include <qstringlist.h>
 #include <qtimer.h>
+#include <QMouseEvent>
+
+#include <GL/glu.h>
 
 // Xbrabo header files
 #include "glview.h"
@@ -54,7 +58,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ///// constructor /////////////////////////////////////////////////////////////
-GLView::GLView(QWidget* parent, const char* name) : QGLWidget(parent,name),
+GLView::GLView(QWidget* parent, const char* name) : QGLWidget(parent),
 /// The default constructor.
   xPos(0.0f),
   yPos(0.0f),
@@ -67,7 +71,7 @@ GLView::GLView(QWidget* parent, const char* name) : QGLWidget(parent,name),
   maxRadius(1.0f),
   currentPerspectiveProjection(baseParameters.perspectiveProjection)
 {
-  setFocusPolicy(QWidget::StrongFocus); // needed to receive all keystrokes
+  setFocusPolicy(Qt::StrongFocus); // needed to receive all keystrokes
   orientationQuaternion = new Quaternion<float>(0.0f, 0.0f, 0.0f);
   timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -247,16 +251,19 @@ void GLView::resetView(const bool update)
 void GLView::saveImage()
 /// Saves the view to an image.
 {
+  QStringList saveFormatsList;
+
   ///// get the available output formats
-  QStringList saveFormats = QImage::outputFormatList();
-  QStringList::Iterator it = saveFormats.begin();
+        QList<QByteArray> saveFormats = QImageWriter::supportedImageFormats();
+        QList<QByteArray>::Iterator it = saveFormats.begin();
   while(it != saveFormats.end())
   {
     if((*it) == "JPEG")
       *it = "JPEG (*.jpg)";
     else
-      *it += " (*."+(*it).lower()+")";  // 'BMP' -> 'BMP (*.bmp)'
+      *it += " (*."+(*it).toLower()+")";  // 'BMP' -> 'BMP (*.bmp)'
     it++;
+    saveFormatsList << QString(*it);
   }
 
   ///// set up and show the dialog
@@ -275,7 +282,7 @@ void GLView::saveImage()
   */
   // this way does not allow to set the selected filter. maybe put PNG at the top manually. now BMP is the default
   QString selectedFilter;
-  QString filename = QFileDialog::getSaveFileName(0, saveFormats.join(";;"), 0, 0, tr("Choose a filename and format"), &selectedFilter);
+  QString filename = QFileDialog::getSaveFileName(0, tr("Choose a filename and format"), QFileDialog::tr("/tmp"), saveFormatsList.join(";;"), &selectedFilter);
   if(filename.isEmpty())
     return;
 
@@ -283,14 +290,14 @@ void GLView::saveImage()
   //extension = extension.mid(extension.find("."));
   //extension = extension.remove(")");
   //qDebug("extension: "+extension);
-  QString extension = selectedFilter.mid(selectedFilter.find(".")).remove(")");
+  QString extension = selectedFilter.mid(selectedFilter.indexOf(".")).remove(")");
 
   if(filename.contains(extension) == 0)
     filename += extension;
 
   //QString format = saveDialog.selectedFilter();
   //format = format.left(format.find(" "));
-  QString format = selectedFilter.left(selectedFilter.find(" "));
+  const char* format = selectedFilter.left(selectedFilter.indexOf(" ")).toLatin1().data();
 
   // generate an image from the OpenGL view
   // -> It is possible to get a transparant image when using grabFrameBuffer(true)
@@ -425,7 +432,7 @@ void GLView::paintGL()
   glPopMatrix();
   glFlush(); // drawing is complete => send for execution
   if(animation)
-    timer->start(redrawWait, true);
+    timer->start(redrawWait);
 }
 
 ///// mousePressEvent /////////////////////////////////////////////////////////
@@ -445,11 +452,11 @@ void GLView::mousePressEvent(QMouseEvent* e)
 void GLView::mouseMoveEvent(QMouseEvent* e)
 /// Overridden from QGlWidget::mouseMoveEvent. Handles left mouse button drags.
 {
-  if(e->state() & Qt::LeftButton) // only track mousemoves for the left button
+  if(e->modifiers() & Qt::LeftButton) // only track mousemoves for the left button
   {
     QPoint newPosition = e->pos(); // the mouse moved from mousePosition to newPosition
 
-    if(e->state() & Qt::ShiftButton) // shift has precedence over control
+    if(e->modifiers() & Qt::ShiftModifier) // shift has precedence over control
     {
       ///// LEFTBUTTON + SHIFT
       ///// up/down movement: zooming (z-translation)
@@ -460,7 +467,7 @@ void GLView::mouseMoveEvent(QMouseEvent* e)
       else
         zRot = -180.0f * static_cast<float>(newPosition.x() - mousePosition.x()) / static_cast<float>(width()); // z-rotation of entire system
     }
-    else if(e->state() & Qt::ControlButton)
+    else if(e->modifiers() & Qt::ControlModifier)
     {
       ///// LEFTBUTTON + CONTROL
       ///// up/down movement: y-translation
@@ -522,33 +529,33 @@ void GLView::keyPressEvent(QKeyEvent* e)
 {
   switch(e->key())
   {
-    case Qt::Key_Left :   if(e->state() & Qt::ShiftButton)
+    case Qt::Key_Left :   if(e->modifiers() & Qt::ShiftModifier)
                             zRot = 5.0f; // rotate counterclockwise
-                          else if(e->state() & Qt::ControlButton)
+                          else if(e->modifiers() & Qt::ControlModifier)
                             translateXY(-5, 0);
                           else
                             yRot = -5.0f; // rotate left
                           break;
 
-    case Qt::Key_Up     : if(e->state() & Qt::ShiftButton)
+    case Qt::Key_Up     : if(e->modifiers() & Qt::ShiftModifier)
                             translateZ(-5);
-                          else if(e->state() & Qt::ControlButton)
+                          else if(e->modifiers() & Qt::ControlModifier)
                             translateXY(0, -5);
                           else
                              xRot = -5.0f; // rotate up
                           break;
 
-    case Qt::Key_Right  : if(e->state() & Qt::ShiftButton)
+    case Qt::Key_Right  : if(e->modifiers() & Qt::ShiftModifier)
                             zRot = -5.0f; // rotate clockwise
-                          else if(e->state() & Qt::ControlButton)
+                          else if(e->modifiers() & Qt::ControlModifier)
                             translateXY(5, 0);
                           else
                             yRot =  5.0f; // rotate right
                           break;
 
-    case Qt::Key_Down   : if(e->state() & Qt::ShiftButton)
+    case Qt::Key_Down   : if(e->modifiers() & Qt::ShiftModifier)
                             translateZ(5);
-                          else if(e->state() & Qt::ControlButton)
+                          else if(e->modifiers() & Qt::ControlModifier)
                             translateXY(0, 5);
                           else
                             xRot = 5.0f; // rotate down

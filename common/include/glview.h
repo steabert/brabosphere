@@ -32,7 +32,7 @@ class QTimer;
 template <class T> class Quaternion;
 
 // Base class header file
-#include <qgl.h>
+#include <QtOpenGL/qgl.h>
 
 ///// class GLView ////////////////////////////////////////////////////////////
 class GLView : public QGLWidget

@@ -38,11 +38,14 @@
 
 // Qt header files
 #include <qapplication.h>
-#include <qdom.h>
-#include <qfiledialog.h>
+#include <QtXml/qdom.h>
+#include <QFileDialog>
 #include <qmessagebox.h>
 #include <qpoint.h>
-#include <qstringlist.h>
+#include <QStringList>
+#include <QKeyEvent>
+
+#include <GL/glu.h>
 
 // Xbrabo header files
 #include "atomset.h"
@@ -357,13 +360,13 @@ void GLSimpleMoleculeView::keyPressEvent(QKeyEvent* e)
 /// Overridden from GLView::keyPressEvent. Handles key presses for font changes
 /// (no public interface yet)
 {
-  if(e->state() & Qt::ControlButton && (e->key() == Qt::Key_Plus || e->key() == Qt::Key_1))
+  if(e->modifiers() & Qt::ControlModifier && (e->key() == Qt::Key_Plus || e->key() == Qt::Key_1))
   {
     labelFont.setPointSize(labelFont.pointSize() + 1);
     qDebug("increasing font size by 1");
     updateGL();
   }
-  else if(e->state() & Qt::ControlButton && (e->key() == Qt::Key_Minus || e->key() == Qt::Key_2))
+  else if(e->modifiers() & Qt::ControlModifier && (e->key() == Qt::Key_Minus || e->key() == Qt::Key_2))
   {
     labelFont.setPointSize(labelFont.pointSize() - 1);
     qDebug("decreasing font size by 1");
@@ -993,7 +996,7 @@ void GLSimpleMoleculeView::drawLabels()
     glRotatef(-angle, axis.x(), axis.y(), axis.z()); // backrotation
     QString label;
     if(showElements)
-      label = AtomSet::numToAtom(atoms->atomicNumber(i)).stripWhiteSpace();
+      label = AtomSet::numToAtom(atoms->atomicNumber(i)).trimmed();
     if(showNumbers)
       label += QString::number(i + 1);
     if(chargeType != AtomSet::None)
