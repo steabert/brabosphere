@@ -1,0 +1,29 @@
+This is a fork of the program Brabosphere, based on version 1.0.0
+which was obtained here: http://brabosphere.sourceforge.net/
+
+Ben Swerts is the original author, but the project seems abandoned.
+My main objective is to get it to work with Qt4 (and maybe Qt5).
+
+	Brabosphere README for version 1.0.0 (12/05/2006)
+	-------------------------------------------------
+
+Brabosphere is an OpenSource program for the 3D visualisation of molecular systems and their properties. It's name is derived from the quantum mechanical program package BRABO (developed at the Structural Chemistry Group of the University of Antwerp) for which it acts as a graphical frontend. It can also be used for the analysis and visualisation of the data resulting from this type of calculations. In that respect, results from some other quantum mechanical applications will also be accepted. For quick viewing of molecular structures, the program CrdView is being developed, acting as a replacement for Xmol and allowing command line conversion between a multitude of coordinate file formats.
+
+Some of the most important features:
+
+* Multiplatform: Brabosphere and CrdView run on Windows, Linux, Unix and MacOS. Additionally they are presented using the native interface on each platform.
+
+* The use of OpenGL accelerated graphics allow high speed rendering of the molecules using features like shading, highlights and transparancy.
+
+* Inclusion of the OpenBabel library allows Brabosphere and CrdView to load and save in a multitude of coordinate file formats.
+
+* Molecules can be built from scratch using absolute or relative cartesian and internal coordinates. 
+
+* Electron densities can be visualised in 2D and 3D. The 2D mode allows a detailed analysis of the resulting density map.
+
+* Distribution of the program and its sources is actively encouraged by releasing it under the GNU Public License. 
+
+
+Be sure to check out http://www.brabosphere.be for more information.
+
+Enjoy!

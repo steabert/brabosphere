@@ -1,0 +1,42 @@
+***************************************************************************************
+
+This file shows the instructions on how to compile and install Brabosphere on UNIX-like 
+systems. Instructions for Windows can be found in the file Install.txt
+
+***************************************************************************************
+
+---------------
+| Compilation |
+---------------
+
+Brabosphere relies on a number of libraries: Qt (http://www.trolltech.com/products/qt/index.html), OpenBabel (http://openbabel.sourceforge.net/) and QextMDI (http://www.geocities.com/gigafalk/qextmdi.htm). Although version 4 of the Qt library has been released, Brabosphere only compiles with the 3.2 and 3.3 series. Download details will be given in the respective sections. For the OpenBabel library, either version 1.100.2 or one of the new 2.x releases is required. The latest version of QextMDI (not maintained anymore) is version 2.0.2. Sources for both Windows and UNIX can be downloaded from the site.
+
+
+Qt
+--
+
+The Qt library serves as the base for KDE, a well-known desktop environment in the Linux world. If you run a reasonably new version of Linux, it is highly probable that Qt is installed or can at least be installed easily using the standard package managers. When the version is correct, no compilation is needed. It is however possible that Qt was compiled without OpenGL support. In that case a local version of Qt has to be compiled anyway. When using a binary Qt-package, make sure the development packages are also installed (including the compatibility headers if they are mentioned separately!). This can be checked easily by typing 'qmake' at the command prompt. This executable is part of Qt, needed for the compilation of Brabosphere and should be in the path.
+
+When no suitable binary version is available, the latest version of the Qt3 branch can be downloaded from Trolltech's FTP server at ftp://ftp.trolltech.com/qt/source. Although I have absolutely no experience with the MacOS version, the procedure should be similar when run from the shell. Excellent information about supported platforms, supported compilers and platform issues can be found on the Trolltech website.
+
+After unpacking the downloaded file, Qt has to be configured for building with 'configure -thread'. To be sure OpenGL-support is enabled, first run it with 'configure -thread -verbose' and check the output above the license agreement prompt. Then start configure again with the aforementioned 'thread' option only. When that is finished a simple 'make' should build the entire library without errors. This is a very long process and can be shortened by issuing 'make sub-src sub-tools' instead. This only builds the required components for compiling Brabosphere.
+
+
+QextMDI
+-------
+
+The UNIX version of QextMDI can be downloaded at http://www.geocities.com/gigafalk/qextmdi/qextmdi-2.0.2.tgz. It needs the Qt library for compilation. Although a configure script is present, it is only suited for compilation using Qt2 and not Qt3. A simple solution is to go into the 'qextmdi' subdirectory and to type 'qmake "CONFIG+=release" qextmdi.pro' followed by 'make'. Compilation should proceed swiftly without errors. Like Qt itself, QextMDI does not need to be installed. You will, however, need to make the resulting DLL available by copying it into /usr/local/lib, for example. 
+
+
+OpenBabel
+---------
+
+For OpenBabel the standard 'configure && make && make install' is needed, regardless of the version used. Be sure to remember where this library will be installed. The default is normally '/usr/local'.
+
+
+Brabosphere
+-----------
+
+When Qt, QextMDI and OpenBabel are compiled, Brabosphere can finally be compiled. Before compilation can be started, the file 'brabosphere.pri' has to be edited. First of all the directories containing the QextMDI and OpenBabel installations should be updated. These locations can be given as absolute directories or relative ones. For the latter, an extra '../' has to be added in order to compile without errors. More options can be changed but they don't normally have to be adapted. You can make a choice wether or not to use the OpenBabel library and if so, what version (preferably version 2.x). Then there's a choice whether the QextMDI library is to be used as a DLL (.so, default) or compiled in statically. Then a choice can be made between building a retail version or a debug version. In case you don't want to compile CrdView, the file 'brabosphere.pro' in the main directory can be changed. 
+
+Now Brabosphere is ready for building. A 'qmake' followed by 'make' should proceed without errors. The warnings you see should only arise from the QextMDI/OpenBabel/system header files. The binaries can be found in the 'bin' subdirectory.

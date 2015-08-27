@@ -1,0 +1,374 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>PlotMapWidget</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>PlotMapWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>465</width>
+            <height>327</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Plot a 2D density map</string>
+    </property>
+    <property name="mouseTracking">
+        <bool>true</bool>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>PixmapLayout</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout21</cstring>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>PushButtonLoadMap</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Load map</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+L</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Loads a new map file.</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>PushButtonSaveImage</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Save image</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+S</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Saves the current view as an image.</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>PushButtonOptions</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Show &amp;options</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+O</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Shows or hides the options.</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>PushButtonClose</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Close</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+C</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Closes this window.</string>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer3</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Vertical</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>90</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QGroupBox">
+                            <property name="name">
+                                <cstring>groupBox6</cstring>
+                            </property>
+                            <property name="title">
+                                <string>Statistics</string>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>layout273</cstring>
+                                    </property>
+                                    <vbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <property name="spacing">
+                                            <number>0</number>
+                                        </property>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>textLabel20</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Grid size:</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>textLabel23</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Maximum:</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>textLabel23_2</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Minimum:</string>
+                                            </property>
+                                        </widget>
+                                    </vbox>
+                                </widget>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>layout274</cstring>
+                                    </property>
+                                    <vbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <property name="spacing">
+                                            <number>0</number>
+                                        </property>
+                                        <widget class="QLayoutWidget">
+                                            <property name="name">
+                                                <cstring>layout267</cstring>
+                                            </property>
+                                            <hbox>
+                                                <property name="name">
+                                                    <cstring>unnamed</cstring>
+                                                </property>
+                                                <property name="spacing">
+                                                    <number>0</number>
+                                                </property>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>TextLabelGridSizeX</cstring>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>800</string>
+                                                    </property>
+                                                    <property name="whatsThis" stdset="0">
+                                                        <string>The grid size (number of points in the X and Y directions) of the currently loaded map file.</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel22</cstring>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>x</string>
+                                                    </property>
+                                                    <property name="whatsThis" stdset="0">
+                                                        <string>The grid size (number of points in the X and Y directions) of the currently loaded map file.</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>TextLabelGridSizeY</cstring>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>600</string>
+                                                    </property>
+                                                    <property name="alignment">
+                                                        <set>AlignVCenter|AlignRight</set>
+                                                    </property>
+                                                    <property name="whatsThis" stdset="0">
+                                                        <string>The grid size (number of points in the X and Y directions) of the currently loaded map file.</string>
+                                                    </property>
+                                                </widget>
+                                            </hbox>
+                                        </widget>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>TextLabelMaxPos</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>0.15475</string>
+                                            </property>
+                                            <property name="alignment">
+                                                <set>AlignVCenter|AlignRight</set>
+                                            </property>
+                                            <property name="whatsThis" stdset="0">
+                                                <string>The maximum density value in the map.</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>TextLabelMaxNeg</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>-0.12477</string>
+                                            </property>
+                                            <property name="alignment">
+                                                <set>AlignVCenter|AlignRight</set>
+                                            </property>
+                                            <property name="whatsThis" stdset="0">
+                                                <string>THe minimum density value in the map.</string>
+                                            </property>
+                                        </widget>
+                                    </vbox>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QGroupBox">
+                            <property name="name">
+                                <cstring>groupBox118</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>4</hsizetype>
+                                    <vsizetype>5</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="title">
+                                <string>Current grid point</string>
+                            </property>
+                            <vbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <property name="spacing">
+                                    <number>0</number>
+                                </property>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>layout266</cstring>
+                                    </property>
+                                    <hbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <widget class="QLayoutWidget">
+                                            <property name="name">
+                                                <cstring>layout256</cstring>
+                                            </property>
+                                            <grid>
+                                                <property name="name">
+                                                    <cstring>unnamed</cstring>
+                                                </property>
+                                                <property name="spacing">
+                                                    <number>0</number>
+                                                </property>
+                                                <widget class="QLabel" row="1" column="0">
+                                                    <property name="name">
+                                                        <cstring>textLabel19_2</cstring>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Value:</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel" row="0" column="0">
+                                                    <property name="name">
+                                                        <cstring>textLabel19</cstring>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Coordinates:</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel" row="0" column="1">
+                                                    <property name="name">
+                                                        <cstring>TextLabelCurrentCoordinate</cstring>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>(100, 100)</string>
+                                                    </property>
+                                                    <property name="alignment">
+                                                        <set>AlignVCenter|AlignRight</set>
+                                                    </property>
+                                                    <property name="whatsThis" stdset="0">
+                                                        <string>The grid point corresponding to the position of the mouse on the map.</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel" row="1" column="1">
+                                                    <property name="name">
+                                                        <cstring>TextLabelCurrentValue</cstring>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>0.15467</string>
+                                                    </property>
+                                                    <property name="alignment">
+                                                        <set>AlignVCenter|AlignRight</set>
+                                                    </property>
+                                                    <property name="whatsThis" stdset="0">
+                                                        <string>The density value at the position of the mouse on the map.</string>
+                                                    </property>
+                                                </widget>
+                                            </grid>
+                                        </widget>
+                                    </hbox>
+                                </widget>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel25</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Cartesian coordinates:</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>TextLabelCurrentCartesian</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>(1.4523, 5.1245)</string>
+                                    </property>
+                                    <property name="whatsThis" stdset="0">
+                                        <string>The cartesian coordinates of the position of the mouse on the map.</string>
+                                    </property>
+                                </widget>
+                            </vbox>
+                        </widget>
+                    </vbox>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

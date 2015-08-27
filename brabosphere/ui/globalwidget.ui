@@ -1,0 +1,488 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>GlobalWidget</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>GlobalWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>355</width>
+            <height>376</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Global setup</string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>11</number>
+        </property>
+        <property name="spacing">
+            <number>6</number>
+        </property>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>GroupBoxType</cstring>
+            </property>
+            <property name="title">
+                <string>Type</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>Layout1</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Type of calculation</string>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox">
+                            <item>
+                                <property name="text">
+                                    <string>Single Point Energy</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Energy &amp; Forces</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Geometry Optimization</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>ComboBoxType</cstring>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Determines the type of calculation to perform. When a calculation is running, this cannot be changed.</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>Layout11</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>CheckBoxBuur</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>false</bool>
+                            </property>
+                            <property name="text">
+                                <string>Use a cluster model</string>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox">
+                            <item>
+                                <property name="text">
+                                    <string>PC</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>SM</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>ComboBoxBuur</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>CheckBoxXF</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Use extended format for coordinates and forces</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>If checked, coordinates and forces will be written in extended precision (20 digits) instead of normal precision (10 digits). When a calculation is running, this cannot be changed.</string>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>GroupBox17</cstring>
+            </property>
+            <property name="title">
+                <string>Files</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>TextLabel13</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Description</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="0" column="1">
+                    <property name="name">
+                        <cstring>LineEditDesc</cstring>
+                    </property>
+                    <property name="maxLength">
+                        <number>70</number>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>An optional description can be given which is added to a number of BRABO input files.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>TextLabel14</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Filenames prefix</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="1" column="1">
+                    <property name="name">
+                        <cstring>LineEditName</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="maxLength">
+                        <number>10</number>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>The filename prefix is used to construct all files needed for a calculation. When for example 'molecule' is entered, filenames will be named 'molecule.inp', 'molecule.crd', 'molecule.aff', etc. This prefix cannot have any spaces in it. When a calculation is running, this cannot be changed.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="2" column="0">
+                    <property name="name">
+                        <cstring>TextLabel1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Directory</string>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget" row="2" column="1">
+                    <property name="name">
+                        <cstring>layout33</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>LineEditDir</cstring>
+                            </property>
+                            <property name="maxLength">
+                                <number>255</number>
+                            </property>
+                            <property name="readOnly">
+                                <bool>false</bool>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>This is the directory in which the calculation will be carried out. It is the place where input and output files are written. It is not related to the place where the Brabosphere calculation file can be saved. When a calculation is running, this cannot be changed.</string>
+                            </property>
+                        </widget>
+                        <widget class="QToolButton">
+                            <property name="name">
+                                <cstring>ToolButtonDir</cstring>
+                            </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
+                            <property name="autoRaise">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QButtonGroup">
+            <property name="name">
+                <cstring>ButtonGroupRunType</cstring>
+            </property>
+            <property name="title">
+                <string>Type of run</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>RadioButtonRun1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Under Xbrabo control</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>RadioButtonRun2</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="text">
+                        <string>Using a script file</string>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>Layout23</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QRadioButton">
+                            <property name="name">
+                                <cstring>RadioButtonRun3</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>false</bool>
+                            </property>
+                            <property name="text">
+                                <string>Submit to the queue</string>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox">
+                            <item>
+                                <property name="text">
+                                    <string>Snail</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Batch</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>ComboBoxQueue</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout56</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer5</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>53</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>ButtonOK</cstring>
+                    </property>
+                    <property name="text">
+                        <string>OK</string>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Accepts the changes made to the global setup of the calculation.</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer5_2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>54</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>ButtonCancel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Cancel</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Ignores the changes made to the global setup of the calculation.</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer5_3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>53</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>ButtonReset</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Reset</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Resets all values to their defaults. When a calculation is running, only a limited number of options will be reset.</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer5_3_2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>53</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<tabstops>
+    <tabstop>ComboBoxType</tabstop>
+    <tabstop>CheckBoxBuur</tabstop>
+    <tabstop>ComboBoxBuur</tabstop>
+    <tabstop>CheckBoxXF</tabstop>
+    <tabstop>LineEditDesc</tabstop>
+    <tabstop>LineEditName</tabstop>
+    <tabstop>LineEditDir</tabstop>
+    <tabstop>RadioButtonRun1</tabstop>
+    <tabstop>RadioButtonRun3</tabstop>
+    <tabstop>ComboBoxQueue</tabstop>
+    <tabstop>ButtonOK</tabstop>
+    <tabstop>ButtonCancel</tabstop>
+    <tabstop>ButtonReset</tabstop>
+</tabstops>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

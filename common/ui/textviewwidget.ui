@@ -1,0 +1,50 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>TextViewWidget</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>TextViewWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>614</width>
+            <height>541</height>
+        </rect>
+    </property>
+    <property name="font">
+        <font>
+            <family>Courier</family>
+        </font>
+    </property>
+    <property name="caption">
+        <string>TextViewWidget</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>10</number>
+        </property>
+        <widget class="QTextEdit">
+            <property name="name">
+                <cstring>TextEdit</cstring>
+            </property>
+            <property name="wordWrap">
+                <enum>NoWrap</enum>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+            <property name="undoRedoEnabled">
+                <bool>false</bool>
+            </property>
+            <property name="tabChangesFocus">
+                <bool>true</bool>
+            </property>
+        </widget>
+    </vbox>
+</widget>
+<layoutdefaults spacing="0" margin="0"/>
+</UI>

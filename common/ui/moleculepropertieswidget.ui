@@ -1,0 +1,289 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>MoleculePropertiesWidget</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>MoleculePropertiesWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>215</width>
+            <height>239</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Change the display mode of the molecule</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox2</cstring>
+            </property>
+            <property name="title">
+                <string>Rendering type</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QComboBox" row="0" column="1">
+                    <item>
+                        <property name="text">
+                            <string>None</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Lines</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Tubes</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Ball &amp; Stick</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Van der Waals</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>ComboBoxRenderingType</cstring>
+                    </property>
+                    <property name="currentItem">
+                        <number>3</number>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Allows changing the rendering type of only the current molecule. The default values are taken from the Preferences.</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="1" column="1">
+                    <item>
+                        <property name="text">
+                            <string>None</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Lines</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Tubes</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>ComboBoxForces</cstring>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Allows changing the rendering type of only the current molecule's forces. The default values are taken from the Preferences.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Molecule:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Forces:</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox1</cstring>
+            </property>
+            <property name="title">
+                <string>Show labels composed of</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>CheckBoxElement</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Elements</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Allows changing whether the labels to be shown contain the elements (only for the current molecule). The default values are taken from the Preferences.</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>CheckBoxNumber</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Numbers</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Allows changing whether the labels to be shown contain the atoms' indices (only for the current molecule). The default values are taken from the Preferences.</string>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout25</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>LabelCharge</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Charges:</string>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox">
+                            <item>
+                                <property name="text">
+                                    <string>None</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Mulliken</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Stockholder</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>ComboBoxCharge</cstring>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Determines which type of charges to show in the labels.</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout2</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>40</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButtonOK</cstring>
+                    </property>
+                    <property name="text">
+                        <string>OK</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Accepts all changes made.</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>40</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButtonCancel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Cancel</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Ignore any changes made.</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>40</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>PushButtonOK</sender>
+        <signal>clicked()</signal>
+        <receiver>MoleculePropertiesWidget</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>PushButtonCancel</sender>
+        <signal>clicked()</signal>
+        <receiver>MoleculePropertiesWidget</receiver>
+        <slot>reject()</slot>
+    </connection>
+</connections>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
